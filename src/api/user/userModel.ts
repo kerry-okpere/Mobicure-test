@@ -12,7 +12,7 @@ export class User extends Model {}
         type: Sequelize.STRING
     },
     phoneNumber: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.STRING,
         allowNull: false
     },
     age: {
@@ -24,4 +24,10 @@ export class User extends Model {}
     modelName: 'user'
 });
 
-User.sync({ force: true });
+User.sync({ force: true })
+.then( () => {
+    console.log("Table has been created")
+})
+.catch(err => {
+    throw err;
+});

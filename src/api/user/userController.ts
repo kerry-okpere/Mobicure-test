@@ -1,4 +1,4 @@
-// import user from "./userService";
+import { user } from "./userService";
 
 // class UserController {
 
@@ -12,3 +12,6 @@
 //         }
 //     }
 // }
+export const caller = () => {
+  user.createNewUser();
+}
