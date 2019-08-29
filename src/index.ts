@@ -1,12 +1,12 @@
-import express = require('express');
+import app from "./app";
 
-const app = express();
 const port = 5000;
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.listen(port, function () {
-  console.log(`Example app listening on port ${port}`);
+app.listen(port, function (err) {
+    try{
+        console.log(`Example app listening on port ${port}`);
+    }catch(err){
+        throw err;
+    }
+  
 });
