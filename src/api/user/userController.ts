@@ -35,8 +35,8 @@ export class UserController {
       const valid = verify.verifyUserDetails(data, res);
       if (valid) {
         try{
-          const updatedUser = await user.updateUserDetails(firstName, valid);
-          if (updatedUser){
+          const response = await user.updateUserDetails(firstName, valid);
+          if (response[0]){
             res.status(200).json(valid);
           } else {
             res.status(400).json({
