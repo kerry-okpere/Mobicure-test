@@ -1,22 +1,22 @@
 import { connection } from './../../shared/db';
 import Sequelize from "sequelize";
 
-const Model = Sequelize.Model;
-
-export class User extends Model {}
+export class User extends Sequelize.Model {}
     User.init({
         firstName: {
             type: Sequelize.STRING,
+            allowNull: false
     },
     lastName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     phoneNumber: {
         type: Sequelize.STRING,
         allowNull: false
     },
     age: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false
     }
 }, {
@@ -29,5 +29,5 @@ User.sync({ force: true })
     console.log("Table has been created")
 })
 .catch(err => {
-    throw err;
+    console.log(err);
 });

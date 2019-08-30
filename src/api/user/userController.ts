@@ -12,6 +12,6 @@ import { user } from "./userService";
 //         }
 //     }
 // }
-export const caller = () => {
-  user.createNewUser();
+export const caller = async () => {
+  await user.createNewUser();
 }
