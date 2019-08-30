@@ -4,7 +4,8 @@ Get started by installing dependencies .
 ```bash
 npm install 
 ```
-## start server
+## Start server
+Start server by runing this command in your terminal.
 ```bash
 npm run watch
 ```
