@@ -5,7 +5,7 @@ const usercontroller = new UserController();
 const router = Router();
 
 router.get('/:firstName', function (req, res) {
-    usercontroller.getUser(req.body, res);
+    usercontroller.getUser(req.params.firstName, res);
 });
 
 router.post('/', function (req, res) {

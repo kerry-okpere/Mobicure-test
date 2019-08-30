@@ -7,10 +7,9 @@ export class UserController {
   public getUser = async ( firstName: string, res: any ) => {
     try{
       const findUser = await user.getUserDetails(firstName);
-      console.log("=========>", findUser);
       res.status(200).json(findUser)
     }catch(err){
-      res.status(500).json({ message: "we are having an issue "})
+      res.status(500).json({ message: `we are having an issue ${err}`})
     }
      
   }
