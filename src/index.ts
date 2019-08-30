@@ -1,10 +1,11 @@
 import app from "./app";
+import { PORT } from "./config/env";
 
-const port = 5000;
+// const port = PORT || 5000;
 
-app.listen(port, function (err) {
+app.listen(PORT, (err: any) => {
     try{
-        console.log(`Example app listening on port ${port}`);
+        console.log(`Example app listening on port ${PORT}`);
     }catch(err){
         throw err;
     }
