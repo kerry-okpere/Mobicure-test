@@ -4,6 +4,16 @@ import { user } from "./userService";
 const verify = new Verify();
 
 export class UserController {
+  public getUser = async ( firstName: string, res: any ) => {
+    try{
+      const findUser = await user.getUserDetails(firstName);
+      console.log("=========>", findUser);
+      res.status(200).json(findUser)
+    }catch(err){
+      res.status(500).json({ message: "we are having an issue "})
+    }
+     
+  }
   public  createUser = async (data: {
               firstName: string, 
               lastName: string, 
@@ -20,6 +30,25 @@ export class UserController {
               res.status(500).json({message: "something went wrong", error});
             }
         }
+  }
+  public updateUser = async (firstName: string, data: {
+              firstName: string, lastName: string, phoneNumber: string, age: number}, res: any) => {
+      const valid = verify.verifyUserDetails(data, res);
+      if (valid) {
+        try{
+          const updatedUser = await user.updateUserDetails(firstName, valid);
+          if (updatedUser){
+            res.status(200).json(valid);
+          } else {
+            res.status(400).json({
+              message: `there is no user with the first name ${firstName}`
+            });
+          }
+        }
+        catch(error){
+          res.status(500).json({message: "something went wrong", error});
+        }
+      }
   }
   public deleteUser = async (firstName: string, res: any) => {
     try{
