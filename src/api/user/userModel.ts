@@ -24,10 +24,3 @@ export class User extends Sequelize.Model {}
     modelName: 'user'
 });
 
-User.sync({ force: true })
-.then( () => {
-    console.log("Table has been created")
-})
-.catch(err => {
-    console.log(err);
-});

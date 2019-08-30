@@ -1,11 +1,15 @@
 import { Router } from "express";
-import { caller } from "./userController";
+import { UserController } from "./userController";
 
+const usercontroller = new UserController();
 const router = Router();
 
-router.get('/', function (req, res) {
-    caller();
-    res.send('Hello World!');
+router.post('/', function (req, res) {
+    usercontroller.createUser(req.body, res);
 });
+router.delete('/:firstName', function (req, res) {
+    usercontroller.deleteUser(req.params.firstName, res);
+});
+
 
 export const userRouter = router;
